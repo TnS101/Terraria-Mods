@@ -1,0 +1,3 @@
+displayName = CustomMod
+author = TnS101
+version = 0.1
