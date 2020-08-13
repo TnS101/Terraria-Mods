@@ -19,11 +19,11 @@ namespace CustomMod.Items.Held.Udyr
         public override void SetDefaults()
         {
             item.melee = true;
-            item.useStyle = 3;
+            item.useStyle = ItemUseStyleID.Stabbing;
             item.damage = 7;
             item.width = 20;
             item.height = 20;
-            item.rare = 8;
+            item.rare = ItemRarityID.Green;
             item.knockBack = 8;
             item.useTime = 35;
             item.autoReuse = true;

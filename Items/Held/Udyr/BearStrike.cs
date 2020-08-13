@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CustomMod.Validators;
+using System;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -16,11 +17,11 @@ namespace CustomMod.Items.Held.Udyr
         public override void SetDefaults()
         {
             item.melee = true;
-            item.useStyle = 3;
+            item.useStyle = ItemUseStyleID.Stabbing;
             item.damage = 5;
             item.width = 30;
             item.height = 30;
-            item.rare = 8;
+            item.rare = ItemRarityID.Blue;
             item.knockBack = 1;
             item.useTime = 10;
             item.autoReuse = false;
@@ -92,11 +93,12 @@ namespace CustomMod.Items.Held.Udyr
                 if (!player.HasBuff(mod.BuffType("BearStanceCD")) && !player.HasBuff(mod.BuffType("MonkeyPenalty")))
                 {
                     item.noMelee = true;
+                    player.statMana -= 5;
                     Main.PlaySound(mod.GetLegacySoundSlot(SoundType.Custom, "Sounds/Udyr/Item/UdyrBearStance"));
                     PassiveCheck(player);
                     player.AddBuff(mod.BuffType("BearStance"), 100);
                     player.AddBuff(mod.BuffType("MonkeyPenalty"), 100);
-                    player.AddBuff(mod.BuffType("BearStanceCD"), 350);
+                    player.AddBuff(mod.BuffType("BearStanceCD"), new PlayerCDApplier().Execute(player, 350));
 
                     return true;
                 }

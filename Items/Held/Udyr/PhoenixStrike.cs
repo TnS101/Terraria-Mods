@@ -10,18 +10,18 @@ namespace CustomMod.Items.Held.Udyr
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Phoenix Strike"); // By default, capitalization in classnames will add spaces to the display name. You can customize the display name here by uncommenting this line.
+            DisplayName.SetDefault("Phoenix Strike");
             Tooltip.SetDefault("Every forth attack burns your enemy!");
         }
 
         public override void SetDefaults()
         {
             item.magic = true;
-            item.useStyle = 1;
+            item.useStyle = ItemUseStyleID.SwingThrow;
             item.damage = 8;
             item.width = 20;
             item.height = 20;
-            item.rare = 8;
+            item.rare = ItemRarityID.Orange;
             item.knockBack = 3;
             item.useTime = 10;
             item.autoReuse = true;
@@ -39,7 +39,7 @@ namespace CustomMod.Items.Held.Udyr
                 {
                     AttackCounter = 3;
                     player.AddBuff(mod.BuffType("PhoenixFlame"), 800);
-                    item.useStyle = 5;
+                    item.useStyle = ItemUseStyleID.HoldingOut;
                     item.noMelee = true;
                     item.useTime = 1;
                     item.useAnimation = 10;
@@ -58,7 +58,7 @@ namespace CustomMod.Items.Held.Udyr
             else
             {
                 item.noMelee = false;
-                item.useStyle = 1;
+                item.useStyle = ItemUseStyleID.SwingThrow;
                 item.useTime = 10;
                 item.useAnimation = 38;
             }
