@@ -106,10 +106,6 @@ namespace CustomMod.Items.Held.Udyr
 
             if (AttackCounter == 0)
             {
-                if (target.HasBuff(mod.BuffType("TigerDoubleDamage")))
-                {
-                    target.StrikeNPC(target.lifeMax / 4, 0, 1, false, false, false);
-                }
                 player.ClearBuff(mod.BuffType("TigerDoubleDamage"));
             }
         }

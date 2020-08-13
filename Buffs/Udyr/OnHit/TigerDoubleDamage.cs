@@ -15,19 +15,18 @@ namespace CustomMod.Buffs.Udyr.OnHit
 
         public override void Update(NPC npc, ref int buffIndex)
         {
-            if (this.ReApply(npc, 1, buffIndex))
+            if (!this.ReApply(npc, 1, buffIndex))
             {
-                return;
-            }
+                if (timer == 0)
+                {
+                    var damage = npc.lifeMax / 20 > 30 ? 30 : npc.lifeMax / 20;
+                    npc.StrikeNPC(damage, 0, 1, false, false, false);
+                    npc.HitEffect(1);
+                    timer = 60;
+                }
 
-            if (timer == 0)
-            {
-                npc.StrikeNPC(npc.lifeMax / 20, 0, 1, false, false, false);
-                npc.HitEffect(1);
-                timer = 60;
+                timer--;
             }
-
-            timer--;
         }
 
         public override bool ReApply(NPC npc, int time, int buffIndex)

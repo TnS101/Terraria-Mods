@@ -18,12 +18,12 @@ namespace CustomMod.Items.Held.Udyr
         {
             item.magic = true;
             item.useStyle = ItemUseStyleID.SwingThrow;
-            item.damage = 8;
+            item.damage = 7;
             item.width = 20;
-            item.height = 20;
+            item.height = 25;
             item.rare = ItemRarityID.Orange;
-            item.knockBack = 3;
-            item.useTime = 10;
+            item.knockBack = 4;
+            item.useTime = 14;
             item.autoReuse = true;
             item.value = 10;
             item.useAnimation = 38;
@@ -99,7 +99,7 @@ namespace CustomMod.Items.Held.Udyr
 
             if (AttackCounter == 4)
             {
-                target.AddBuff(BuffID.OnFire, 150);
+                target.AddBuff(BuffID.OnFire, 100);
                 player.ClearBuff(mod.BuffType("PhoenixFlame"));
                 AttackCounter = 0;
             }
